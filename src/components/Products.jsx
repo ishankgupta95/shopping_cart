@@ -5,6 +5,7 @@ import Card from 'react-bootstrap/Card';
 import { useDispatch, useSelector } from 'react-redux';
 import { add } from '../store/cartSlice';
 import { getProducts } from '../store/productSlice';
+import StatusCode from '../utils/StatusCode';
 
 export default function Products() {
 
@@ -15,11 +16,11 @@ export default function Products() {
         dispatch(getProducts())
     }, [])
 
-    if(status === 'loading'){
+    if(status === StatusCode.LOADING){
       return <p>Loading...</p>
     }
 
-    if(status === 'error'){
+    if(status === StatusCode.ERROR){
       return <p>Error, try later</p>
     }
 
